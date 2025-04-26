@@ -1,0 +1,142 @@
+SUBMITTED BY : MARYAM SHOAIB 
+                                      LAB NO : 07 
+                                      SAP ID : 59947
+
+                                                              STACK  IN ARRAY: 
+TASK 1: 
+#include <iostream>
+using namespace std;
+#define Max 3
+int top = -1;
+int s_arr[Max];
+void Pop(){
+ if (top == -1){
+ 	
+ cout<<" stack underflow"<<endl;
+ return;
+ 
+}
+int value = s_arr[top];
+cout<<"pop value :"<<value<<" ";
+top--;
+cout<<endl;
+}
+void Push(int data) 
+{ 
+if (top == Max - 1){
+
+  cout << "stack overflow" << endl; 
+  return;
+   } 
+  top++; 
+   s_arr[top] = data; 
+   cout << s_arr[top] << " ";
+    } 
+	void peek() { 
+	cout << "Top element: " << s_arr[top];
+	 } 
+	 void display() { 
+	 if (top == -1) { 
+	 cout << "stack is empty"; 
+	
+	return;
+	 } 
+	 cout << "Current stack elements: ";
+	  for (int i = 0; i <= top; i++) { 
+	  cout << s_arr[i] << " "; } 
+	  }
+	   int main() { 
+	   Push(1); 
+	   Push(2);
+	    Push(3); 
+		Push(4);
+		 display(); 
+		 cout << endl; 
+		 peek(); 
+		 cout << endl;
+		  Pop(); 
+		  Pop(); 
+		  Pop(); 
+		  Pop();
+		   return 0;
+
+
+		     
+ TASK 2: 
+#include <iostream>
+ using namespace std;
+  struct Node 
+{ 
+string item;
+ Node* next;
+  };
+ Node* head = NULL;
+  void AddItem(string data) {
+   Node* newNode = new Node();
+    newNode->item = data;
+	 newNode->next = NULL; 
+	 if (head == NULL)
+ { 
+head = newNode;
+ }
+ else 
+{ 
+Node* temp = head;
+ while (temp->next != NULL)
+ { 
+temp = temp->next;
+ }
+ temp->next = newNode; 
+} 
+cout << "Added: " << data << " ";
+ }
+ void RemoveItem(string data) 
+{
+ Node* temp = head; 
+Node* prev = NULL;
+ while (temp != NULL && temp->item != data)
+ {
+ prev = temp; 
+temp = temp->next;
+ } 
+if (temp == NULL) 
+{
+ cout << "Item not found"; 
+return;
+ }
+ if (prev == NULL)
+ {
+ head = temp->next;
+ }
+ else
+ {
+ prev->next = temp->next;
+ }
+ delete temp;
+ cout << "Removed: " << data << " "; 
+} 
+void ViewList()
+ {
+ if (head == NULL) 
+{ 
+cout << "List is empty"; 
+return;
+ }
+ cout << "Grocery list: ";
+ Node* temp = head;
+ while (temp != NULL) 
+{
+ cout << temp->item << " "; 
+temp = temp->next;
+ }
+ }
+ int main()
+ {
+ AddItem("Milk");
+ AddItem("Bread");
+ AddItem("Eggs");
+ ViewList(); 
+cout << endl; 
+RemoveItem("Bread");
+ ViewList();
+ return 0; }
